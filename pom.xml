@@ -1,0 +1,89 @@
+<project 
+    xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+    <modelVersion>4.0.0</modelVersion>
+    
+    <!-- Parent GAV -->
+
+    <parent>
+        <groupId>io.github.ishankashyap01</groupId>
+        <artifactId>super-parent-pom</artifactId>
+        <version>1.0.1</version>
+    </parent>
+
+    <!-- Project GAV -->
+
+    <groupId>io.github.ishankashyap01</groupId>
+    <artifactId>markdown-cli</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+
+    <!-- Project Information -->
+
+    <name>Markdown CLI</name>
+    <description>A command line tool for generating markdown syntax</description>
+    <url>https://github.com/IshanKashyap01/Markdown-CLI</url>
+
+    <scm>
+        <connection>scm:git:https://github.com/IshanKashyap01/Markdown-CLI</connection>
+        <developerConnection>scm:git:git@github.com:IshanKashyap01/Markdown-CLI</developerConnection>
+        <url>https://github.com/IshanKashyap01/Markdown-CLI</url>
+    </scm>
+
+    <!-- Properties: compile to Java 21 -->
+    
+    <properties>
+        <maven.compiler.release>21</maven.compiler.release>
+    </properties>
+
+    <!-- Annotation processor for Picocli -->
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>info.picocli</groupId>
+                            <artifactId>picocli-codegen</artifactId>
+                            <version>4.7.7</version>
+                        </path>
+                    </annotationProcessorPaths>
+                    <compilerArgs>
+                        <arg>-Aproject=${project.groupId}/${project.artifactId}</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- Project Dependencies: markdown library, JUnit, and Picocli for now -->
+
+    <dependencies>
+        <!-- Markdown syntax generator library -->
+        <dependency>
+            <groupId>io.github.ishankashyap01</groupId>
+            <artifactId>markdown-syntax-generator</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!-- JUnit 6 for testing -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>6.1.3</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- Picocli for CLI -->
+        <dependency>
+            <groupId>info.picocli</groupId>
+            <artifactId>picocli</artifactId>
+            <version>4.7.7</version>
+        </dependency>
+    </dependencies>
+
+</project>
